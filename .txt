@@ -1,0 +1,1 @@
+ALTER SEQUENCE customers_id_seq RESTART WITH 1;

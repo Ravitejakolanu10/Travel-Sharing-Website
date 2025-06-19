@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Sharing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #555;
+        }
+
+        form {
+            width: 80%;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="date"], input[type="search"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .links button {
+            width: auto;
+            margin: 5px 10px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="links">
+        <a href="/login_page"><button>Login as Captain</button></a>
+        <a href="/register"><button>Register as Captain</button></a>
+    </div>
+
+    <h1>BOOK TICKETS</h1>
+
+    <!-- Search Form -->
+    <form action="/search" method="get">
+        <input type="text" name="from" placeholder="Your Current Location" required><br>
+        <input type="text" name="to" placeholder="Where You Want to Go" required><br>
+        <input type="date" name="date" required ><br>
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Update Message -->
+    <p><%= update %></p>
+
+    <br>
+
+    <!-- Check Booking Status Form -->
+    <h3>Check Booking Status</h3>
+    <form action="/booked" method="get">
+        <input type="search" name="booking_id" placeholder="Enter Your Booking ID">
+        <button type="submit">Check</button>
+    </form>
+
+    <p></p>
+
+</body>
+</html>

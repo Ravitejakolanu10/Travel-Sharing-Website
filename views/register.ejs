@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .register-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .register-form input,
+        .register-form select,
+        .otp-form input,
+        .otp-form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .register-form button,
+        .otp-form button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        .register-form button:hover,
+        .otp-form button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .otp-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .otp-message {
+            font-size: 1em;
+            color: #2ecc71;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <h1>Register</h1>
+        <form action="/create" method="post" class="register-form">
+            <input type="text" name="fname" placeholder="First Name" ><br>
+            <input type="text" name="lname" placeholder="Last Name" ><br>
+
+            <select name="vtype" required>
+                <option value="select">Select Vehicle Type</option>
+                <option value="car">Car</option>
+                <option value="bike">Bike</option>
+            </select><br>
+
+            <input type="text" name="vname" placeholder="Enter Vehicle Name" ><br>
+            <input type="text" name="vno" placeholder="Vehicle Number" ><br>
+            <input type="number" name="number" placeholder="Phone Number" ><br>
+            <input type="password" name="pass" placeholder="Create Password" ><br>
+            <input type="email" name="email" id="em" placeholder="Email Address" required>
+            <input type="number" name="otp" placeholder="OTP" >
+            <button type="submit">Create</button>
+        </form>
+        <div class="otp-form">
+            <form action="/send-otp" method="post">
+                <input type="hidden" name="email" id="hi" value="">
+                <button type="submit" onclick="transfer()">Send OTP</button>
+            </form>
+             
+            <p class="error-message"><%= message %></p>
+        </div>
+        <a href="/">Go Back</a>
+    </div>
+    <%= message %>
+    <script>
+        function transfer() {
+            alert("OTP Sent");
+            const email = document.getElementById("em").value;
+            document.getElementById("hi").value = email;
+        }
+    </script>
+    
+</body>
+</html>

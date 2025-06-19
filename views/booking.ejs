@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .booking-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .booking-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .booking-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        .booking-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .confirmation-message {
+            text-align: center;
+            color: #2ecc71;
+            font-size: 1.1em;
+            margin-top: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="booking-form">
+        <h1>Booking</h1>
+        <form action="/booking" method="post">
+            <input type="text" name="name" placeholder="Full Name" required><br>
+            <input type="number" name="phone" placeholder="Mobile Number" minlength="10" maxlength="15" required><br>
+            <input type="text" name="pickup" placeholder="Enter Pickup Location" required><br>
+            <input type="email" name="email" placeholder="Email" required><br>
+            <input type="number" name="total" max="4" placeholder="Number of People" required><br>
+            <button type="submit">Book</button>
+        </form>
+        <% if (bookingId) { %>
+            <div class="confirmation-message">
+                Your Booking Id: <%= bookingId %>
+            </div>
+        <% } %>
+        <a href="/" class="back-link">Go Back</a>
+    </div>
+
+</body>
+</html>

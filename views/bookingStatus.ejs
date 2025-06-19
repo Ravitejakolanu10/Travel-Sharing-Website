@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .booking-details {
+            margin-bottom: 30px;
+        }
+
+        .details-section {
+            margin-bottom: 20px;
+        }
+
+        .details-section p {
+            margin: 5px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Status</h1>
+        <% if (booking) { %>
+            <div class="booking-details">
+                <!-- User Booking Details -->
+                <h2>Passenger Details</h2>
+                <div class="details-section">
+                    <p><strong>Booking ID:</strong> <%= booking.booking_id %></p>
+                    <p><strong>Passenger Name:</strong> <%= booking.username %></p>
+                    <p><strong>Passenger Phone:</strong> <%= booking.phone %></p>
+                    <p><strong>Pickup Location:</strong> <%= booking.pickup_location %></p>
+                    <p><strong>Destination:</strong> <%= booking.to_loc %></p>
+                    <p><strong>Date of Travel:</strong> <%= booking.t_date %></p>
+                    <p><strong>Booking Status:</strong> Confirmed</p>
+                </div>
+                
+                <!-- Driver Details -->
+                <h2>Driver Details</h2>
+                <div class="details-section">
+                    <p><strong>Driver Name:</strong> <%= booking.fname %> <%= booking.lname %></p>
+                    <p><strong>Vehicle Number:</strong> <%= booking.vehicle_no %></p>
+                    <p><strong>Driver Contact:</strong> <%= booking.driver_phone %></p>
+                    <p><strong>Vehicle Type:</strong> <%= booking.vehicle_type %></p>
+                    <p><strong>Vehicle Name:</strong> <%= booking.vehicle_name %></p>
+                </div>
+            </div>
+        <% } else { %>
+            <p>No booking found for the given ID.</p>
+        <% } %>
+        <a href="/" class="button">Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .driver-list {
+            width: 80%;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .driver-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        .driver-item:last-child {
+            border-bottom: none;
+        }
+
+        .driver-details {
+            flex: 1;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .book-button {
+            align-self: center;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .book-button:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            text-align: center;
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+
+        .go-back-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #95a5a6;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        .go-back-button:hover {
+            background-color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .driver-list {
+                width: 95%;
+            }
+
+            .driver-item {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .book-button {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .go-back-button {
+                width: auto;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>List Of Vehicles</h1>
+
+    <div class="driver-list">
+        <% if (locals.error && Array.isArray(error)) { %>
+            <% error.forEach(data => { %>
+                <div class="driver-item">
+                    <div class="driver-details">
+                        <p><strong>Name:</strong> <%= data.fname %> <%= data.lname %></p>
+                        <p><strong>Vehicle No:</strong> <%= data.vehicle_no %></p>
+                        <p><strong>Phone Number:</strong> <%= data.phone %></p>
+                    </div>
+                    <form action="/book" method="get">
+                        <input type="hidden" name="driver_id" value="<%- data.id %>">
+                        <button class="book-button" type="submit">Book</button>
+                    </form>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p class="error-message">Captains Unavailable</p>
+        <% } %>
+    </div>
+
+    <a href="/" class="go-back-button">Go Back</a>
+
+</body>
+</html>
